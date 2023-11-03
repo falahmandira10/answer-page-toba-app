@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:audioplayers/audioplayers.dart';
 
 class SongAns extends StatefulWidget {
   const SongAns({super.key});
@@ -18,8 +19,16 @@ class _SongAnsState extends State<SongAns> {
 
   // final player = AudioPlayer();
 
-  // Future<void> playAudioFromUrl(String url) async {
-  //   await player.play(UrlSource(url));
+  // Future<void> playMusic(String url) async {
+  //   await player.setSource(AssetSource(url));
+  // }
+
+  // final userAnswer = TextEditingController();
+
+  // @override
+  // void dispose() {
+  //   userAnswer.dispose();
+  //   super.dispose();
   // }
 
   @override
@@ -37,138 +46,124 @@ class _SongAnsState extends State<SongAns> {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 26,
+              fontSize: 24,
             ),
           ),
           backgroundColor: const Color.fromARGB(0, 255, 255, 255),
         ),
-        body: Column(
+        body: ListView(
           children: <Widget>[
-            Flexible(
-                flex: 1,
-                child: Container(
-                    padding: const EdgeInsets.all(20),
-                    color: Colors.red,
-                    child: LinearProgressIndicator(
-                      backgroundColor: Colors.brown[50],
-                      valueColor: AlwaysStoppedAnimation(Colors.blue[400]),
-                      value: _initial,
-                      minHeight: 10,
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    ))),
-            Flexible(
-                flex: 2,
-                child: Column(children: <Widget>[
-                  const Flexible(
-                      flex: 1,
-                      child: Align(
-                        alignment: Alignment(-0.85, 1),
-                        child: Text(
-                          "Title lagu",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                  const Flexible(
-                      flex: 1,
-                      child: Align(
-                          alignment: Alignment(-0.85, -0.5),
-                          child: Text("Nama penyanyi"))),
-                  Flexible(
-                      flex: 2,
-                      child: Container(
-                        margin: const EdgeInsets.only(left: 20, right: 20),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: Colors.deepPurple,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(blurRadius: 5.0, offset: Offset(0, 5)),
-                            ]),
-                        child: Row(
-                          children: [
-                            const Flexible(
-                                flex: 1,
-                                child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: CircleAvatar(
-                                      radius: double.infinity,
-                                      backgroundImage:
-                                          AssetImage('images/g1.jpeg'),
-                                    ))),
-                            Flexible(
-                                flex: 3,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    color: Colors.tealAccent,
-                                  ),
-                                )),
-                            Flexible(
-                                flex: 1,
-                                child: ElevatedButton.icon(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.play_arrow_rounded,
-                                    size: 30,
-                                    color: Colors.black,
-                                  ),
-                                  label: widget,
-                                ))
-                          ],
-                        ),
-                      )),
-                ])),
-            Flexible(
-              flex: 4,
+            Container(
+              height: 50,
+              padding: const EdgeInsets.all(20),
+              color: Colors.red,
+              child: LinearProgressIndicator(
+                backgroundColor: Colors.brown[50],
+                valueColor: AlwaysStoppedAnimation(Colors.blue[400]),
+                value: _initial,
+                minHeight: 10,
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const SizedBox(
+              height: 50,
               child: Column(
-                children: <Widget>[
-                  const Flexible(
-                    flex: 1,
-                    child: Align(
-                      alignment: Alignment(-0.85, 0.4),
-                      child: Text(
-                        "Your Answer",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                children: [
+                  Align(
+                    alignment: Alignment(-0.8, 1),
+                    child: Text(
+                      "Title lagu",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Flexible(
-                    flex: 3,
-                    child: Container(
-                      color: Colors.green,
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: const TextField(
-                        expands: true,
-                        maxLines: null,
-                        textAlign: TextAlign.justify,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.lightBlue),
+                  Align(
+                      alignment: Alignment(-0.8, -0.5),
+                      child: Text("Nama penyanyi"))
+                ],
+              ),
+            ),
+            Container(
+              height: 60,
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: const [
+                    BoxShadow(blurRadius: 5.0, offset: Offset(0, 5)),
+                  ]),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const CircleAvatar(
+                    radius: 20,
+                    backgroundImage: AssetImage('images/g1.jpeg'),
+                  ),
+                  const Image(
+                    image: AssetImage('images/waveform-audio.png'),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // playMusic(
+                      //     'audio/A Super Nice Japanese Song  Anata no Yoru ga Akeru Made Lyrics.mp3');
+                    },
+                    icon: const Icon(
+                      Icons.play_arrow_rounded,
+                      size: 35,
+                      color: Colors.black,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 370,
+              padding: const EdgeInsets.all(30),
+              color: Colors.purpleAccent,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Your Answer",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    child: TextField(
+                      // controller: userAnswer,
+                      // keyboardType: TextInputType.multiline,
+                      expands: true,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        // contentPadding: EdgeInsets.only(top: 230),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            Flexible(
-                flex: 2,
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(20),
-                  color: Colors.amber,
-                  child: ElevatedButton(
-                    onPressed: updateProgress,
-                    child: const Text("Next"),
-                  ),
-                )),
-            const SizedBox(
-              height: 10,
-            )
+            Container(
+              height: 50,
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              color: Colors.amber,
+              child: ElevatedButton(
+                onPressed: () {
+                  updateProgress();
+                },
+                child: const Text("Next"),
+              ),
+            ),
           ],
         ));
   }
