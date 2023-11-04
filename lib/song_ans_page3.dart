@@ -77,14 +77,21 @@ class _SongAns3State extends State<SongAns3> {
               height: 50,
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment(-0.8, 1),
-                    child: Text(
-                      titleMusic,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        titleMusic,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
-                  Align(alignment: Alignment(-0.8, -0.5), child: Text(singer))
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Align(
+                        alignment: Alignment.centerLeft, child: Text(singer)),
+                  )
                 ],
               ),
             ),
@@ -95,7 +102,11 @@ class _SongAns3State extends State<SongAns3> {
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: const [
-                    BoxShadow(blurRadius: 5.0, offset: Offset(0, 5)),
+                    BoxShadow(
+                      color: Colors.black87,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 5),
+                    ),
                   ]),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -124,7 +135,7 @@ class _SongAns3State extends State<SongAns3> {
             Container(
               height: 370,
               padding: const EdgeInsets.all(30),
-              color: Colors.purpleAccent,
+              // color: Colors.purpleAccent,
               child: const Column(
                 children: [
                   SizedBox(
@@ -163,6 +174,7 @@ class _SongAns3State extends State<SongAns3> {
               child: ElevatedButton(
                 onPressed: () {
                   updateProgress();
+                  Get.toNamed('/3', arguments: _initial);
                 },
                 child: const Text("Next"),
               ),

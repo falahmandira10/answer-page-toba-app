@@ -78,17 +78,17 @@ class _SongAnsState extends State<SongAns> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         titleMusic,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Align(
                         alignment: Alignment.centerLeft, child: Text(singer)),
                   )
