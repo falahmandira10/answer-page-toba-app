@@ -1,6 +1,6 @@
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:audioplayers/audioplayers.dart';
 
 class SongAns extends StatefulWidget {
   const SongAns({super.key});
@@ -28,13 +28,13 @@ class _SongAnsState extends State<SongAns> {
   //   await player.setSource(AssetSource(url));
   // }
 
-  // final userAnswer = TextEditingController();
+  final userAnswer = TextEditingController();
 
-  // @override
-  // void dispose() {
-  //   userAnswer.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    userAnswer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,132 +54,144 @@ class _SongAnsState extends State<SongAns> {
               fontSize: 24,
             ),
           ),
-          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+          backgroundColor: Color(0xffE9E9E9),
         ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              height: 50,
-              padding: const EdgeInsets.all(20),
-              color: Colors.red,
-              child: LinearProgressIndicator(
-                backgroundColor: Colors.brown[50],
-                valueColor: AlwaysStoppedAnimation(Colors.blue[400]),
-                value: _initial,
-                minHeight: 10,
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+        body: Container(
+          decoration: BoxDecoration(
+            color: Color(0xffE9E9E9),
+          ),
+          child: ListView(
+            children: <Widget>[
+              Container(
+                height: 50,
+                padding: const EdgeInsets.all(20),
+                color: Color(0xffE9E9E9),
+                child: LinearProgressIndicator(
+                  backgroundColor: Color(0xffFFFFFF),
+                  valueColor: AlwaysStoppedAnimation(Color(0xff15CAD7)),
+                  value: _initial,
+                  minHeight: 10,
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              height: 50,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Align(
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 50,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          titleMusic,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Align(
+                          alignment: Alignment.centerLeft, child: Text(singer)),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 60,
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                decoration: BoxDecoration(
+                    color: Color(0xffFFFFFF),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black54,
+                        blurRadius: 5.0,
+                        offset: Offset(0, 5),
+                      ),
+                    ]),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundImage: AssetImage(albumCover),
+                    ),
+                    const Image(
+                      image: AssetImage('images/waveform-audio.png'),
+                    ),
+                    IconButton(
+                      onPressed: () async {
+                        // playMusic(
+                        //     'audio/A Super Nice Japanese Song  Anata no Yoru ga Akeru Made Lyrics.mp3');
+                      },
+                      icon: const Icon(
+                        Icons.play_arrow_rounded,
+                        size: 35,
+                        color: Colors.black,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 370,
+                padding: const EdgeInsets.all(30),
+                // color: Colors.purpleAccent,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        titleMusic,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        "Your Answer",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Align(
-                        alignment: Alignment.centerLeft, child: Text(singer)),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              height: 60,
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black87,
-                      blurRadius: 5.0,
-                      offset: Offset(0, 5),
+                    const SizedBox(
+                      height: 10,
                     ),
-                  ]),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage: AssetImage(albumCover),
-                  ),
-                  const Image(
-                    image: AssetImage('images/waveform-audio.png'),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      // playMusic(
-                      //     'audio/A Super Nice Japanese Song  Anata no Yoru ga Akeru Made Lyrics.mp3');
-                    },
-                    icon: const Icon(
-                      Icons.play_arrow_rounded,
-                      size: 35,
-                      color: Colors.black,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              height: 370,
-              padding: const EdgeInsets.all(30),
-              // color: Colors.purpleAccent,
-              child: const Column(
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Your Answer",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Expanded(
-                    child: TextField(
-                      // controller: userAnswer,
-                      // keyboardType: TextInputType.multiline,
-                      expands: true,
-                      maxLines: null,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        // contentPadding: EdgeInsets.only(top: 230),
+                    Expanded(
+                      child: TextField(
+                        controller: userAnswer,
+                        expands: true,
+                        maxLines: null,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Color(0xffFFFFFF),
+                          // contentPadding: EdgeInsets.only(top: 230),
+                        ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 50,
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                // color: Colors.amber,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Color(0xff527EE7)),
+                    foregroundColor:
+                        MaterialStateProperty.all(Color(0xffFFFFFF)),
                   ),
-                ],
+                  onPressed: () {
+                    updateProgress();
+                    Get.toNamed('/2', arguments: _initial);
+                  },
+                  child: const Text("Next"),
+                ),
               ),
-            ),
-            Container(
-              height: 50,
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              color: Colors.amber,
-              child: ElevatedButton(
-                onPressed: () {
-                  updateProgress();
-                  Get.toNamed('/2', arguments: _initial);
-                },
-                child: const Text("Next"),
-              ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
