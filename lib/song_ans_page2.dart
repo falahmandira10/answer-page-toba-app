@@ -54,10 +54,10 @@ class _SongAns2State extends State<SongAns2> {
               fontSize: 24,
             ),
           ),
-          backgroundColor: Color(0xffE9E9E9),
+          backgroundColor: const Color(0xffE9E9E9),
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xffE9E9E9),
           ),
           child: ListView(
@@ -65,10 +65,10 @@ class _SongAns2State extends State<SongAns2> {
               Container(
                 height: 50,
                 padding: const EdgeInsets.all(20),
-                color: Color(0xffE9E9E9),
+                color: const Color(0xffE9E9E9),
                 child: LinearProgressIndicator(
-                  backgroundColor: Color(0xffFFFFFF),
-                  valueColor: AlwaysStoppedAnimation(Color(0xff15CAD7)),
+                  backgroundColor: const Color(0xffFFFFFF),
+                  valueColor: const AlwaysStoppedAnimation(Color(0xff15CAD7)),
                   value: _initial,
                   minHeight: 10,
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -103,7 +103,7 @@ class _SongAns2State extends State<SongAns2> {
                 height: 60,
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 decoration: BoxDecoration(
-                    color: Color(0xffFFFFFF),
+                    color: const Color(0xffFFFFFF),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: const [
                       BoxShadow(
@@ -179,9 +179,9 @@ class _SongAns2State extends State<SongAns2> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all(Color(0xff527EE7)),
+                        MaterialStateProperty.all(const Color(0xff527EE7)),
                     foregroundColor:
-                        MaterialStateProperty.all(Color(0xffFFFFFF)),
+                        MaterialStateProperty.all(const Color(0xffFFFFFF)),
                   ),
                   onPressed: () {
                     updateProgress();
