@@ -1,4 +1,4 @@
-// import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,11 +22,11 @@ class _SongAns2State extends State<SongAns2> {
   String singer = "Ed Sheeran";
   String albumCover = "images/thinking_out_loud.jpeg";
 
-  // final player = AudioPlayer();
+  final player = AudioPlayer();
 
-  // Future<void> playMusic(String url) async {
-  //   await player.setSource(AssetSource(url));
-  // }
+  Future<void> playMusic(String url) async {
+    await player.play(AssetSource(url));
+  }
 
   final userAnswer = TextEditingController();
 
@@ -47,7 +47,7 @@ class _SongAns2State extends State<SongAns2> {
           ),
           centerTitle: true,
           title: const Text(
-            "Guess The Lyrics 2",
+            "Guess The Lyrics",
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -123,9 +123,10 @@ class _SongAns2State extends State<SongAns2> {
                       image: AssetImage('images/waveform-audio.png'),
                     ),
                     IconButton(
-                      onPressed: () async {
-                        // playMusic(
-                        //     'audio/A Super Nice Japanese Song  Anata no Yoru ga Akeru Made Lyrics.mp3');
+                      // hoverColor: Colors.red,
+                      onPressed: () {
+                        playMusic(
+                            "Ed_Sheeran_Thinking_Out_Loud_Official_Audio.mp3");
                       },
                       icon: const Icon(
                         Icons.play_arrow_rounded,
@@ -165,7 +166,7 @@ class _SongAns2State extends State<SongAns2> {
                           border: OutlineInputBorder(),
                           filled: true,
                           fillColor: Color(0xffFFFFFF),
-                          // contentPadding: EdgeInsets.only(top: 230),
+                          // contentPadding: EdgeInsets.only(bottom: 230),
                         ),
                       ),
                     ),

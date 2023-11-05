@@ -1,4 +1,4 @@
-// import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,11 +22,11 @@ class _SongAnsState extends State<SongAns> {
   String singer = "Ed Sheeran";
   String albumCover = "images/thinking_out_loud.jpeg";
 
-  // final player = AudioPlayer();
+  final player = AudioPlayer();
 
-  // Future<void> playMusic(String url) async {
-  //   await player.setSource(AssetSource(url));
-  // }
+  Future<void> playMusic(String url) async {
+    await player.play(AssetSource(url));
+  }
 
   final userAnswer = TextEditingController();
 
@@ -123,9 +123,10 @@ class _SongAnsState extends State<SongAns> {
                       image: AssetImage('images/waveform-audio.png'),
                     ),
                     IconButton(
-                      onPressed: () async {
-                        // playMusic(
-                        //     'audio/A Super Nice Japanese Song  Anata no Yoru ga Akeru Made Lyrics.mp3');
+                      // hoverColor: Colors.red,
+                      onPressed: () {
+                        playMusic(
+                            "Ed_Sheeran_Thinking_Out_Loud_Official_Audio.mp3");
                       },
                       icon: const Icon(
                         Icons.play_arrow_rounded,
@@ -165,7 +166,7 @@ class _SongAnsState extends State<SongAns> {
                           border: OutlineInputBorder(),
                           filled: true,
                           fillColor: Color(0xffFFFFFF),
-                          // contentPadding: EdgeInsets.only(top: 230),
+                          // contentPadding: EdgeInsets.only(bottom: 230),
                         ),
                       ),
                     ),
