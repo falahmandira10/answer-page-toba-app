@@ -28,6 +28,10 @@ class _SongAns3State extends State<SongAns3> {
     await player.play(AssetSource(url));
   }
 
+  Future<void> stopMusic() async {
+    await player.stop();
+  }
+
   final userAnswer = TextEditingController();
 
   @override
@@ -186,6 +190,7 @@ class _SongAns3State extends State<SongAns3> {
                   ),
                   onPressed: () {
                     updateProgress();
+                    stopMusic();
                   },
                   child: const Text("Next"),
                 ),
